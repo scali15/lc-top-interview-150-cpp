@@ -35,11 +35,6 @@ Thumbs.db
 __pycache__/
 *.pyc
 
-# -------------------------------------
-# GitHub workflow logs
-# -------------------------------------
-.github/workflows/*.log
-
 
 # -------------------------------------
 # CMake Testing junk

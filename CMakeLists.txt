@@ -20,7 +20,7 @@ foreach(MAIN_FILE ${PROBLEM_MAINS})
     # Add executable using main.cpp + solution.cpp
     add_executable(${NAME}
         ${MAIN_FILE}
-        ${DIR}/solution.cpp
+        ${DIR}/solution.hpp
     )
 
     target_include_directories(${NAME} PRIVATE

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-#include "solution.cpp"
+#include "solution.hpp"
 #include "VectorUtils.h"
 
 using namespace std;

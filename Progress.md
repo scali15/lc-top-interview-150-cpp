@@ -3,7 +3,7 @@
 ### Progress bar
 
 <!-- PROGRESS_BAR_START -->
-Progress: 2% (3/150)
+Progress: 2% (4/150)
 █░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 <!-- PROGRESS_BAR_END -->
 
@@ -40,7 +40,7 @@ Progress: 2% (3/150)
 ### Two Pointers
 <!-- CHECKLIST_START:Two_Pointers -->
 - [x] 125_valid_palindrome
-- [ ] 392_is_subsequence
+- [x] 392_is_subsequence
 - [ ] 167_two_sum_ii_input_array_is_sorted
 - [ ] 11_container_with_most_water
 - [ ] 15_3sum

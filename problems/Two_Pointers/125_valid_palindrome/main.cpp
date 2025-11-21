@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-#include "solution.cpp"
+#include "solution.hpp"
 
 using namespace std;
 

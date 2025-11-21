@@ -14,24 +14,41 @@ CHECKLIST_BLOCK_RE = r"<!-- CHECKLIST_START:(.*?) -->(.*?)<!-- CHECKLIST_END:\1 
 
 
 # -----------------------------------------------------------
-# Helpers
+# Update .status file
 # -----------------------------------------------------------
 
-def write_status_file(folder):
-    """Create or update .status inside a problem folder."""
+def update_status_file(folder):
     status_path = os.path.join(folder, ".status")
 
+    if not os.path.exists(status_path):
+        print(f"Error: no .status file found in {folder}")
+        sys.exit(1)
+
     today = datetime.date.today().isoformat()
-    content = f"done: true\ndate: {today}\n"
+
+    with open(status_path, "r") as f:
+        lines = f.readlines()
+
+    new_lines = []
+    for line in lines:
+        if line.startswith("done:"):
+            new_lines.append("done: true\n")
+        elif line.startswith("completed:"):
+            new_lines.append(f"completed: {today}\n")
+        else:
+            new_lines.append(line)
 
     with open(status_path, "w") as f:
-        f.write(content)
+        f.writelines(new_lines)
 
     return status_path
 
 
+# -----------------------------------------------------------
+# Find all solved problems
+# -----------------------------------------------------------
+
 def find_all_status_files():
-    """Scan repo for every .status file."""
     status_files = []
     for root, dirs, files in os.walk("problems"):
         if ".status" in files:
@@ -40,9 +57,12 @@ def find_all_status_files():
 
 
 def extract_problem_name(status_path):
-    """problems/<Category>/123_name/.status → 123_name"""
     return os.path.basename(os.path.dirname(status_path))
 
+
+# -----------------------------------------------------------
+# Progress bar
+# -----------------------------------------------------------
 
 def generate_progress_bar(done, total):
     percent = int(done * 100 / total)
@@ -107,6 +127,19 @@ def update_progress_md(solved_set):
         f.write(content)
 
 
+def get_solved_problems():
+    solved = set()
+    for status_path in find_all_status_files():
+        with open(status_path, "r") as f:
+            content = f.read()
+            # Check if done: true exists in the file
+            if re.search(r"done:\s*true", content):
+                solved.add(extract_problem_name(status_path))
+    return solved
+
+
+
+
 # -----------------------------------------------------------
 # Main
 # -----------------------------------------------------------
@@ -122,17 +155,17 @@ def main():
         print(f"Error: {folder} is not a folder")
         sys.exit(1)
 
-    # Write or overwrite .status
-    write_status_file(folder)
+    # Update .status properly
+    update_status_file(folder)
 
-    # Rescan repo for all solved problems
-    solved = {extract_problem_name(sf) for sf in find_all_status_files()}
+    # Rescan repo for solved problems
+    solved = get_solved_problems()
 
-    # Update markdown
+    # Update Progress.md
     update_progress_md(solved)
 
     print(f"✓ Marked as done: {folder}")
-    print(f"✓ Progress.md updated")
+    print(f"✓ Progress.md updated successfully")
 
 
 if __name__ == "__main__":
