@@ -64,3 +64,7 @@ Then run any problem binary, for example:
 
 - C++20 compiler (Clang or GCC)
 - CMake 3.10+
+
+
+# Progress
+(see detailed progress here: [Progress.md](./Progress.md))
