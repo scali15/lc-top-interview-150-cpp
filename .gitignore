@@ -1,0 +1,48 @@
+# -------------------------------------
+# Build artifacts
+# -------------------------------------
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+*.ninja
+.ninja_deps
+.ninja_log
+
+# -------------------------------------
+# VSCode
+# -------------------------------------
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+
+.vscode/ipch/
+
+# -------------------------------------
+# OS generated files
+# -------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# -------------------------------------
+# Python cache
+# -------------------------------------
+__pycache__/
+*.pyc
+
+# -------------------------------------
+# GitHub workflow logs
+# -------------------------------------
+.github/workflows/*.log
+
+
+# -------------------------------------
+# CMake Testing junk
+# -------------------------------------
+Testing/
+CTestTestfile.cmake
