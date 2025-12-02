@@ -3,8 +3,8 @@
 ### Progress bar
 
 <!-- PROGRESS_BAR_START -->
-Progress: 2% (4/150)
-█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+Progress: 6% (9/150)
+███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 <!-- PROGRESS_BAR_END -->
 
 ---
@@ -13,11 +13,11 @@ Progress: 2% (4/150)
 <!-- CHECKLIST_START:Array_String -->
 - [x] 88_merge_sorted_array
 - [x] 27_remove_element
-- [ ] 26_remove_duplicates_from_sorted_array
-- [ ] 80_remove_duplicates_from_sorted_array_ii
-- [ ] 169_majority_element
-- [ ] 189_rotate_array
-- [ ] 121_best_time_to_buy_and_sell_stock
+- [x] 26_remove_duplicates_from_sorted_array
+- [x] 80_remove_duplicates_from_sorted_array_ii
+- [x] 169_majority_element
+- [x] 189_rotate_array
+- [x] 121_best_time_to_buy_and_sell_stock
 - [ ] 122_best_time_to_buy_and_sell_stock_ii
 - [ ] 55_jump_game
 - [ ] 45_jump_game_ii

@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(${CMAKE_SOURCE_DIR}/libs)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 
 # Find all main.cpp files inside problems and all subdirectories

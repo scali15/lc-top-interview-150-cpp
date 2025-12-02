@@ -8,9 +8,11 @@ PROBLEMS_ROOT = "problems"
 MAIN_TEMPLATE = """#include <iostream>
 #include <vector>
 #include <string>
+
 using namespace std;
 
 #include "solution.hpp"
+#include "VectorUtils.h"
 
 struct Test {
     // TODO: define fields for this problem
@@ -19,7 +21,14 @@ struct Test {
 int main() {
     Solution sol;
 
-    // TODO: write tests
+    vector<Test> tests = 
+    {
+        // TODO: define tests
+    };
+
+    for (Test& t : tests) {
+        // TODO: output tests
+    }
 
     return 0;
 }
@@ -29,6 +38,7 @@ SOLUTION_TEMPLATE = """#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
+
 using namespace std;
 
 class Solution {
