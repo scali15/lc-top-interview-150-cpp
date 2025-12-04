@@ -1,0 +1,29 @@
+Test generateTestFromText(string fileName) {
+    Test ret = {};
+    vector<int> jumps = {};
+
+    string currFile = "bean";
+
+    filesystem::path currPath = filesystem::current_path();
+    filesystem::path testPath = currPath.parent_path() / "problems/Array_String/55_jump_game/tests";
+
+    cout << "test directory: " << testPath << endl << endl;
+
+    for (const auto& entry : filesystem::directory_iterator(testPath))  {
+        if (entry.is_directory()) {
+            cout << "shouldnt happen but theres a folder in the test folder named: " << entry.path().filename() << endl;
+        }
+        else if (entry.is_regular_file()) {
+            cout << "found file: " << entry.path().filename();
+        }
+    }
+    
+    // ifstream inputFile(currFile);
+
+    // if (!inputFile.is_open()) {
+    //     throw std::runtime_error("Error opening file " + currFile);
+    // }
+
+    return {};
+
+}

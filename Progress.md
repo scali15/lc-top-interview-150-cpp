@@ -3,7 +3,7 @@
 ### Progress bar
 
 <!-- PROGRESS_BAR_START -->
-Progress: 6% (9/150)
+Progress: 7% (11/150)
 ███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 <!-- PROGRESS_BAR_END -->
 
@@ -18,8 +18,8 @@ Progress: 6% (9/150)
 - [x] 169_majority_element
 - [x] 189_rotate_array
 - [x] 121_best_time_to_buy_and_sell_stock
-- [ ] 122_best_time_to_buy_and_sell_stock_ii
-- [ ] 55_jump_game
+- [x] 122_best_time_to_buy_and_sell_stock_ii
+- [x] 55_jump_game
 - [ ] 45_jump_game_ii
 - [ ] 274_h_index
 - [ ] 380_insert_delete_getrandom_o1

@@ -7,8 +7,22 @@
 
 class VectorUtils {
 public:
+    static std::vector<int> parseList(std::string list) {
+        vector<int> nums;
+
+        string s = list.substr(1, list.size()-2);             // "[1,2,0,5,7,3,4]" => "1,2,0,5,7,3,4"
+        stringstream ss(s);
+        string token;
+
+        while (getline(ss, token, ',')) {
+            nums.push_back(stoi(token));
+        }
+        return nums;
+    }
+
     template<typename T>
     static std::string printVec(const std::vector<T>& vec) {
+        if (vec.size() > 500) { return "[absolutely massive vector]"; }
         std::ostringstream oss;
         oss << "[";
         for (size_t i = 0; i < vec.size(); i++) {
