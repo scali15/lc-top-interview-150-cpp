@@ -3,7 +3,7 @@
 ### Progress bar
 
 <!-- PROGRESS_BAR_START -->
-Progress: 8% (12/150)
+Progress: 8% (13/150)
 ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 <!-- PROGRESS_BAR_END -->
 
@@ -21,7 +21,7 @@ Progress: 8% (12/150)
 - [x] 122_best_time_to_buy_and_sell_stock_ii
 - [x] 55_jump_game
 - [x] 45_jump_game_ii
-- [ ] 274_h_index
+- [x] 274_h_index
 - [ ] 380_insert_delete_getrandom_o1
 - [ ] 238_product_of_array_except_self
 - [ ] 134_gas_station
