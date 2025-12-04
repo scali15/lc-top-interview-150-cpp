@@ -14,6 +14,29 @@ CHECKLIST_END   = "<!-- CHECKLIST_END:"
 
 
 # -----------------------------------------------------------
+# helper to get time taken in a nice format
+# -----------------------------------------------------------
+def format_elapsed(delta):
+    total_seconds = int(delta.total_seconds())
+
+    days = total_seconds // 86400
+    total_seconds %= 86400
+
+    hours = total_seconds // 3600
+    total_seconds %= 3600
+
+    minutes = total_seconds // 60
+    seconds = total_seconds % 60
+
+    parts = []
+    if days: parts.append(f"{days}d")
+    if hours: parts.append(f"{hours}h")
+    if minutes: parts.append(f"{minutes}m")
+    if seconds: parts.append(f"{seconds}s")
+
+    return " ".join(parts) if parts else "0s"
+
+# -----------------------------------------------------------
 # Mark .status as done
 # -----------------------------------------------------------
 def mark_status_done(folder):
@@ -26,8 +49,10 @@ def mark_status_done(folder):
     with open(status_path) as f:
         lines = f.readlines()
 
+
     with open(status_path, "w") as f:
         found_completed = False
+        time_taken = ""
 
         for line in lines:
             if line.startswith("done:"):
@@ -35,12 +60,38 @@ def mark_status_done(folder):
             elif line.startswith("completed:"):
                 f.write(f"completed: {today}, at: {datetime.now().strftime('%I:%M:%S %p')}\n")
                 found_completed = True
+            elif line.startswith("created:"):
+                f.write(line)   # keep current created line
+
+                # Format: created: YYYY-MM-DD, at: HH:MM:SS AM/PM
+                m = re.search(
+                    r"created:\s*(\d{4}-\d{2}-\d{2}),\s*at:\s*(\d{1,2}:\d{2}:\d{2}\s*[AP]M)",
+                    line
+                )
+                
+                if m:
+                    date_str = m.group(1)
+                    time_str = m.group(2)
+
+                    created_dt = datetime.strptime(date_str + " " + time_str, "%Y-%m-%d %I:%M:%S %p")
+                    now_dt = datetime.now()
+
+                    elapsed = now_dt - created_dt
+                    friendly = format_elapsed(elapsed)
+
+                    time_taken = f"time taken: {friendly}\n"    # save time taken line for later
+                else:
+                    time_taken = f.write("time taken: UNKNOWN\n")
+
             else:
                 f.write(line)
 
         # If no completed line existed, append one
         if not found_completed:
             f.write(f"completed: {today} at {datetime.now().strftime('%I:%M:%S %p')}\n")
+        # Add time taken
+        f.write(time_taken)
+
 
 
 # -----------------------------------------------------------

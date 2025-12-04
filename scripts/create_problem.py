@@ -43,6 +43,28 @@ using namespace std;
 #include "VectorUtils.h"
 
 
+struct Test {{
+    // TODO: define fields for this problem
+}};
+
+void addTestsFolder(vector<Test> *tests);
+
+int main() {{
+    Solution sol;
+
+    vector<Test> tests = 
+    {{
+        // TODO: define tests
+    }};
+
+    for (Test& t : tests) {{
+        // TODO: output tests
+    }}
+
+    return 0;
+}}
+
+
 void addTestsFolder(vector<Test> *tests) {{
     filesystem::path currPath = filesystem::current_path();
     filesystem::path testPath = currPath.parent_path() / "problems/{CATEGORY}/{PROBLEM}/tests";
@@ -64,29 +86,6 @@ void addTestsFolder(vector<Test> *tests) {{
             testFile.close();
         }}
     }}
-}}
-
-struct Test {{
-    // TODO: define fields for this problem
-}};
-
-
-int main() {{
-    Solution sol;
-
-    vector<Test> tests = 
-    {{
-        // TODO: define tests
-    }};
-
-    // add if using tests folder (for huge test cases)
-    // addTestsFolder(&tests);
-
-    for (Test& t : tests) {{
-        // TODO: output tests
-    }}
-
-    return 0;
 }}
 """
 

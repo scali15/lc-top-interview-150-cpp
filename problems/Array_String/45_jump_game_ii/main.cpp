@@ -9,6 +9,36 @@ using namespace std;
 #include "solution.hpp"
 #include "VectorUtils.h"
 
+struct Test {
+    vector<int>nums;
+    int output;
+};
+
+void addTestsFolder(vector<Test> *tests);
+
+int main() {
+    Solution sol;
+
+    vector<Test> tests = 
+    {
+        {{2,3,1,1,4},2},
+        {{2,3,0,1,4},2}
+    };
+
+    addTestsFolder(&tests);
+
+    for (Test& t : tests) {
+        cout << "nums = " << VectorUtils::printVec(t.nums) << endl
+        << "expected output = " << t.output << endl;
+        int ret = sol.jump(t.nums);
+        cout << "got = " << ret << "\n----------\n";
+    }
+
+    return 0;
+}
+
+
+
 void addTestsFolder(vector<Test> *tests) {
     filesystem::path currPath = filesystem::current_path();
     filesystem::path testPath = currPath.parent_path() / "problems/Array_String/45_jump_game_ii/tests";
@@ -21,38 +51,18 @@ void addTestsFolder(vector<Test> *tests) {
 
             if (!testFile.is_open()) { throw runtime_error("Error opening file: " + testFilePath); }
 
-            // TODO: format logic according to specific tests
+            std::string list;
+            std::getline(testFile, list);
+            testFile >> std::ws;    // consume whitespace
 
-            std::string line;
-            std::getline(testFile, line);
+            int numJumps;
+            testFile >> numJumps;
 
+            vector<int> nums = VectorUtils::parseList(list);
+            tests->push_back({nums,numJumps});
+            
             
             testFile.close();
         }
     }
-}
-
-struct Test {
-    vector<int>nums;
-    int output;
-};
-
-
-int main() {
-    Solution sol;
-
-    vector<Test> tests = 
-    {
-        {{2,3,1,1,4},2},
-        {{2,3,0,1,4},2}
-    };
-
-    // add if using tests folder (for huge test cases)
-    // addTestsFolder(&tests);
-
-    for (Test& t : tests) {
-        // TODO: output tests
-    }
-
-    return 0;
 }
